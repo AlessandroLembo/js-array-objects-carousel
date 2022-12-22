@@ -62,8 +62,11 @@ const data = [
 
 // Recupero gli elementi dalla pagina.
 const carouselElement = document.getElementById('carousel');
+const galleryElements = document.querySelectorAll('.gallery');
 const buttonPrev = document.getElementById('prev-image');
 const buttonNext = document.getElementById('next-image');
+
+galleryElements[0].classList.add('active');
 
 
 // Creazione elementi da stampare in pagina.
@@ -80,6 +83,19 @@ const buttonNext = document.getElementById('next-image');
 //                   </div>   
 //                 </div>    
 //               `;
+
 // }
-    
 // carouselElement.innerHTML = images;
+
+let indexImage = 0;
+// Aaggancio un event listener al button prev-image
+buttonNext.addEventListener('click', function(){
+    galleryElements[indexImage].classList.remove('active');
+    
+    indexImage ++;
+    galleryElements[indexImage].classList.add('active');
+
+})
+
+
+

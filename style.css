@@ -24,6 +24,12 @@
     width: 1200px;
     margin: 30px auto; 
     cursor: pointer;
+    display: none;
+
+}
+
+.gallery.active {
+    display: block;
 }
 
 .gallery img{
