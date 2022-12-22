@@ -62,21 +62,24 @@ const data = [
 
 // Recupero gli elementi dalla pagina.
 const carouselElement = document.getElementById('carousel');
+const buttonPrev = document.getElementById('prev-image');
+const buttonNext = document.getElementById('next-image');
+
 
 // Creazione elementi da stampare in pagina.
 
-let images = '';
+// let images = '';
 
-for (let i = 0; i < data.length; i++){
-    images += ` 
-                <div class="gallery">
-                  <img src= ${data[i].image} alt="webp"> 
-                  <div class="title">
-                    <h1>${data[i].title} </h1>
-                    <p>${data[i].text} </p> 
-                  </div>   
-                </div>    
-              `;
-}
+// for (let i = 0; i < data.length; i++){
+//     images += ` 
+//                 <div class="gallery">
+//                   <img src= ${data[i].image} alt="webp"> 
+//                   <div class="title">
+//                     <h1>${data[i].title} </h1>
+//                     <p>${data[i].text} </p> 
+//                   </div>   
+//                 </div>    
+//               `;
+// }
     
-carouselElement.innerHTML = images;
+// carouselElement.innerHTML = images;
