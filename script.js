@@ -88,14 +88,26 @@ galleryElements[0].classList.add('active');
 // carouselElement.innerHTML = images;
 
 let indexImage = 0;
-// Aaggancio un event listener al button prev-image
+// Aaggancio un event listener al button next-image
 buttonNext.addEventListener('click', function(){
     galleryElements[indexImage].classList.remove('active');
     
     indexImage ++;
     galleryElements[indexImage].classList.add('active');
 
+
 })
+
+// Aaggancio un event listener al button prev-image
+buttonPrev.addEventListener('click', function(){
+    galleryElements[indexImage].classList.remove('active');
+    
+    indexImage --;
+    galleryElements[indexImage].classList.add('active');
+
+})
+
+
 
 
 
