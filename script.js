@@ -59,3 +59,22 @@ const data = [
     text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
   }
 ];
+
+// Recupero gli elementi dalla pagina.
+const carouselElement = document.getElementById('carousel');
+
+// Creazione elementi da stampare in pagina.
+
+let images = '';
+
+for (let i = 0; i < data.length; i++){
+    images += ` 
+                <div class="gallery">
+                  <img src= ${data[i].image} alt="webp"> 
+                  <h1>${data[i].title} </h1>
+                  <p>${data[i].text} </p>  
+                </div>    
+              `;
+}
+    
+carouselElement.innerHTML = images;
