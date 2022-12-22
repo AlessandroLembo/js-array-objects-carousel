@@ -7,20 +7,32 @@
 /* Generics */
 .container{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+.container-images{
+    display: flex;
     justify-content: center;
     align-items: center;
 } 
     
-#carousel{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 100px 0;
+#carousel .gallery{
+    display: none;
+} 
+
+#carousel .gallery.active{
+    display: block;
 }
 
 #thumb{
     height: 500px;
     width: 300px;
+}
+
+#thumb img.selected{
+    border: 4px solid #cca300;
 }
 
  /* Images */
@@ -29,6 +41,7 @@ img{
     display: block;
     border-radius: 2px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .gallery img{
@@ -44,18 +57,11 @@ img{
 .gallery{
     height: 500px;
     width: 1200px;
-    margin: 30px auto; 
-    cursor: pointer;
-    display: none;
-
+    margin: 30px auto;
 }
 
 .gallery{
     position: relative;
-}
-
-.gallery.active {
-    display: block;
 }
 
 .title{
@@ -75,8 +81,6 @@ img{
 .title h1{
     font-size: 40px;
 }
-
-/* Thumb */
 
 
 /* Button */

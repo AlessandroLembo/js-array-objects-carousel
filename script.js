@@ -61,62 +61,81 @@ const data = [
 ];
 
 // Recupero gli elementi dalla pagina.
-const carouselElement = document.getElementById('carousel');
-const galleryElements = document.querySelectorAll('.gallery');
+const carousel = document.getElementById('carousel');
+const thumbElement = document.getElementById('thumb');
 const buttonPrev = document.getElementById('prev-image');
 const buttonNext = document.getElementById('next-image');
 
-galleryElements[0].classList.add('active');
+
+// Creazione immagini e testo slider e immagini thumb.
+let images = '';
+let thumb = '';
+
+for (let i = 0; i < data.length; i++){
+    images += ` 
+                <div class="gallery">
+                  <img src= ${data[i].image} alt="webp"> 
+                  <div class="title">
+                    <h1>${data[i].title}</h1>
+                    <p>${data[i].text} </p> 
+                  </div>   
+                </div>   
+              `;
+
+    thumb += `<img src= ${data[i].image} alt="webp">`;          
+}
+
+// Stama immagini in pagina.
+carousel.innerHTML = images;
+thumbElement.innerHTML = thumb;
+
+// Recupero le immagini create.
+const carouselElements = document.querySelectorAll('#carousel .gallery');
+const thumbImages = document.querySelectorAll('#thumb img');
 
 
-// Creazione elementi da stampare in pagina.
 
-// let images = '';
+let index = 0;
+carouselElements[index].classList.add('active');
+thumbImages[index].classList.add('selected');
 
-// for (let i = 0; i < data.length; i++){
-//     images += ` 
-//                 <div class="gallery">
-//                   <img src= ${data[i].image} alt="webp"> 
-//                   <div class="title">
-//                     <h1>${data[i].title} </h1>
-//                     <p>${data[i].text} </p> 
-//                   </div>   
-//                 </div>    
-//               `;
-
-// }
-// carouselElement.innerHTML = images;
-
-let indexImage = 0;
-// Aggancio un event listener al button next-image
+// Attivazione buttons con 2 event listener.
 buttonNext.addEventListener('click', function(){
-    
-    galleryElements[indexImage].classList.remove('active');
-    
-    indexImage ++;
+  
+  carouselElements[index].classList.remove('active');
+  thumbImages[index].classList.remove('selected');
 
-    if (indexImage === galleryElements.length){
-    indexImage = 0;        
-    } 
-    
-    galleryElements[indexImage].classList.add('active');
-        
+  index++;
+
+  if (index === carouselElements.length){
+    index = 0;
+  }
+
+  carouselElements[index].classList.add('active');
+  thumbImages[index].classList.add('selected');
 
 })
 
-// Aggancio un event listener al button prev-image
+
 buttonPrev.addEventListener('click', function(){
-    galleryElements[indexImage].classList.remove('active');
-    
-    indexImage --;
+  
+  carouselElements[index].classList.remove('active');
+  thumbImages[index].classList.remove('selected');
 
-    if (indexImage < 0){
-        indexImage = galleryElements.length - 1;
-    }
+  index--;
 
-    galleryElements[indexImage].classList.add('active');
+  if (index < 0){
+    index = carouselElements.length - 1;
+  }
+
+  carouselElements[index].classList.add('active');
+  thumbImages[index].classList.add('selected');
 
 })
+
+
+
+
 
 
 
