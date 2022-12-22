@@ -4,6 +4,48 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color: aqua;
+/* Generics */
+/* .container{
+    width: 1400px; 
+    margin: 0 auto;
+    border: 1px dashed red;
+} */
+    
+
+/* Gallery Elements */
+#gallery{
+    height: 500px;
+    width: 1200px;
+    margin: 200px auto;
+}
+
+#gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#gallery{
+    position: relative;
+}
+
+#gallery h1, p{
+    position: absolute;
+    right: 0;
+    padding: 0 30px;
+    color: white;
+    text-align: right;
+    
+}
+
+#gallery p{
+    bottom: 50px;
+    font-size: 25px;
+    
+}
+
+#gallery h1{
+    bottom: 110px;
+    font-size: 40px;
 }
