@@ -71,8 +71,10 @@ for (let i = 0; i < data.length; i++){
     images += ` 
                 <div class="gallery">
                   <img src= ${data[i].image} alt="webp"> 
-                  <h1>${data[i].title} </h1>
-                  <p>${data[i].text} </p>  
+                  <div class="title">
+                    <h1>${data[i].title} </h1>
+                    <p>${data[i].text} </p> 
+                  </div>   
                 </div>    
               `;
 }

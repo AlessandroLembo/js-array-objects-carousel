@@ -30,22 +30,21 @@
     position: relative;
 }
 
-.gallery h1, p{
+.title{
     position: absolute;
     right: 0;
+    bottom: 50px;
     padding: 0 30px;
     color: white;
+    text-shadow: 2px 2px black;
     text-align: right;
-    
 }
 
-.gallery p{
-    bottom: 50px;
+.title p{
     font-size: 25px;
-    
 }
 
-.gallery h1{
-    bottom: 110px;
+.title h1{
     font-size: 40px;
 }
+
