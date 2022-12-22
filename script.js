@@ -88,21 +88,32 @@ galleryElements[0].classList.add('active');
 // carouselElement.innerHTML = images;
 
 let indexImage = 0;
-// Aaggancio un event listener al button next-image
+// Aggancio un event listener al button next-image
 buttonNext.addEventListener('click', function(){
+    
     galleryElements[indexImage].classList.remove('active');
     
     indexImage ++;
-    galleryElements[indexImage].classList.add('active');
 
+    if (indexImage === galleryElements.length){
+    indexImage = 0;        
+    } 
+    
+    galleryElements[indexImage].classList.add('active');
+        
 
 })
 
-// Aaggancio un event listener al button prev-image
+// Aggancio un event listener al button prev-image
 buttonPrev.addEventListener('click', function(){
     galleryElements[indexImage].classList.remove('active');
     
     indexImage --;
+
+    if (indexImage < 0){
+        indexImage = galleryElements.length - 1;
+    }
+
     galleryElements[indexImage].classList.add('active');
 
 })

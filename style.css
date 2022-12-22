@@ -5,11 +5,11 @@
 }
 
 /* Generics */
-/* .container{
-    width: 1400px; 
-    margin: 0 auto;
-    border: 1px dashed red;
-} */
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
     
 #carousel{
     display: flex;
@@ -17,6 +17,28 @@
     align-items: center;
     padding: 100px 0;
 }
+
+#thumb{
+    height: 500px;
+    width: 300px;
+}
+
+ /* Images */
+img{
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.gallery img{
+    height: 100%;
+}
+
+#thumb img{
+    height: 20%;
+}
+
 
 /* Gallery Elements */
 .gallery{
@@ -28,19 +50,12 @@
 
 }
 
-.gallery.active {
-    display: block;
-}
-
-.gallery img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
 .gallery{
     position: relative;
+}
+
+.gallery.active {
+    display: block;
 }
 
 .title{
@@ -60,6 +75,9 @@
 .title h1{
     font-size: 40px;
 }
+
+/* Thumb */
+
 
 /* Button */
 #prev-image, 
