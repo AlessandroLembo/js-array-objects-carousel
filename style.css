@@ -52,6 +52,11 @@ img{
     height: 20%;
 }
 
+#thumb img:hover{
+   border-radius: 5px;
+   transform: translate(2px, 2px);
+}
+
 
 /* Gallery Elements */
 .gallery{

@@ -133,6 +133,23 @@ buttonPrev.addEventListener('click', function(){
 
 })
 
+  
+for (let i = 0; i < thumbImages.length; i++){
+
+     const imgThumb = thumbImages[i];
+
+     imgThumb.addEventListener('click', function(){
+       carouselElements[index].classList.remove('active');
+       thumbImages[index].classList.remove('selected');
+       
+       index = i;
+       
+       carouselElements[index].classList.add('active');
+       thumbImages[index].classList.add('selected');
+ 
+     })
+}
+
 
 
 
