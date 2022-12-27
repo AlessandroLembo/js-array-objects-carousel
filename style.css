@@ -96,3 +96,21 @@ img{
     padding: 5px;
     cursor: pointer;
 }
+
+
+.autoplay{
+    margin-top: 1.5rem;
+    cursor: pointer;
+        
+}
+
+#btn-autoplay,
+#btn-reverse-autoplay{
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+#btn-autoplay{
+    background-color: dodgerblue;
+    margin-right: 5px;
+}
