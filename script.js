@@ -94,13 +94,33 @@ const carouselElements = document.querySelectorAll('#carousel .gallery');
 const thumbImages = document.querySelectorAll('#thumb img');
 
 
-
 let index = 0;
 carouselElements[index].classList.add('active');
 thumbImages[index].classList.add('selected');
 
+
+const autoplay = setInterval (function (){
+     
+  carouselElements[index].classList.remove('active');
+  thumbImages[index].classList.remove('selected');
+
+  index++;
+  
+  if (index === carouselElements.length){
+    index = 0;
+  } 
+
+  carouselElements[index].classList.add('active');
+  thumbImages[index].classList.add('selected');
+
+
+}, 3000);
+
+
 // Attivazione buttons con 2 event listener.
 buttonNext.addEventListener('click', function(){
+
+  clearInterval(autoplay);
   
   carouselElements[index].classList.remove('active');
   thumbImages[index].classList.remove('selected');
@@ -118,6 +138,8 @@ buttonNext.addEventListener('click', function(){
 
 
 buttonPrev.addEventListener('click', function(){
+
+  clearInterval(autoplay);
   
   carouselElements[index].classList.remove('active');
   thumbImages[index].classList.remove('selected');
@@ -139,6 +161,9 @@ for (let i = 0; i < thumbImages.length; i++){
      const imgThumb = thumbImages[i];
 
      imgThumb.addEventListener('click', function(){
+
+       clearInterval(autoplay);
+       
        carouselElements[index].classList.remove('active');
        thumbImages[index].classList.remove('selected');
        
@@ -152,6 +177,45 @@ for (let i = 0; i < thumbImages.length; i++){
 
 
 
+
+
+// // Dichiaro una funzione per avviare il count down.
+// const countDown = setInterval(function() {
+   
+//   // Dichiaro una variabile che salvi l'orario in cui scatta il Natale (in millesecondi).
+//   const christmasDate = new Date ("Dec 25, 2022 00:00:00").getTime();
+   
+//   // Dichiaro una variabile che salvi l'orario attuale (in millesecondi).
+//   const now = new Date().getTime();
+  
+//   // Calcolo (in millesecondi), la differenza tra la data di Natale e quella attuale.
+//   const differenceTime = christmasDate - now;
+
+//   // Calcolo i giorni mancanti al Natale.
+//   const days = Math.floor(differenceTime / (1000 * 60 * 60 * 24));
+
+//   // Calcolo le ore mancanti al Natale.
+//   const hours = Math.floor((differenceTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  
+//   // Calcolo i minuti mancanti al Natale.
+//   const minutes = Math.floor((differenceTime % (1000 * 60 * 60)) / (1000 * 60));
+  
+//   // Calcolo i secondi mancanti al Natale.
+//   const seconds = Math.floor((differenceTime % (1000 * 60)) / 1000);
+
+//   // Stampo in pagina il count down.
+//   daysElement.innerText = days < 10 ? '0' + days : days;
+//   hoursElement.innerText = hours < 10 ? '0' + hours : hours;
+//   minutesElement.innerText = minutes < 10 ? '0' + minutes : minutes; 
+//   secondsElement.innerText = seconds < 10 ? '0' + seconds : seconds;
+  
+//   // Controllo quando finisce il count down.
+//   if (differenceTime <= 0) {
+//      clearInterval(countDown);
+   
+//   }
+
+// }, 1000);
 
 
 
