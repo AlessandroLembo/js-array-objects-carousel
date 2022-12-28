@@ -69,7 +69,54 @@ const buttonAutoplay = document.getElementById('btn-autoplay');
 const buttonReverseAutoplay = document.getElementById('btn-reverse-autoplay');
 
 
-// Creazione immagini e testo slider e immagini thumb.
+// Dichiaro una variabile che segni l'inidce relativo alle immagini.
+let index = 0;
+
+// FUNZIONI
+// Funzione per cambiare immagine
+const changePic = target => {
+
+  carouselElements[index].classList.remove('active');
+  thumbImages[index].classList.remove('selected');
+
+  if (target === 'next-image') {
+    index++;
+
+    if (index === carouselElements.length) index = 0;
+
+  } else if (target === 'prev-image') {
+    index--;
+
+    if (index < 0) index = carouselElements.length - 1;
+  } else {
+    index = target; 
+  }
+
+  carouselElements[index].classList.add('active');
+  thumbImages[index].classList.add('selected');
+  
+}
+
+
+// Funzione per far partire l'autoplay.
+const startAutoplay = () => {
+  autoplay = setInterval(() => {
+
+  changePic('next-image');
+}, 3000); 
+}
+
+
+// Funzione per stoppare l'autoplay.
+const stopAutoplay = () => {
+  clearInterval(autoplay);
+  isPlaying = false;
+ 
+  buttonAutoplay.innerText = 'Resume';
+}
+
+
+// Creazione immagini, testo slider e thumbnails.
 let images = '';
 let thumb = '';
 
@@ -87,41 +134,32 @@ for (let i = 0; i < data.length; i++){
     thumb += `<img src= ${data[i].image} alt="webp">`;          
 }
 
-// Stama immagini in pagina.
+// Stampa immagini in pagina.
 carousel.innerHTML = images;
 thumbElement.innerHTML = thumb;
+
 
 // Recupero le immagini create.
 const carouselElements = document.querySelectorAll('#carousel .gallery');
 const thumbImages = document.querySelectorAll('#thumb img');
 
 
-let index = 0;
+// Aggiungo la classe 'active' alle immegini e la classe 'selected' ai thumbs.
 carouselElements[index].classList.add('active');
 thumbImages[index].classList.add('selected');
 
-// Funzionalità di autoplay.
-let autoplay = setInterval (function (){
-     
-  carouselElements[index].classList.remove('active');
-  thumbImages[index].classList.remove('selected');
 
-  index++;
-  
-  if (index === carouselElements.length){
-    index = 0;
-  } 
-
-  carouselElements[index].classList.add('active');
-  thumbImages[index].classList.add('selected');
+/* Dichiaro una variabile per lo scorrimento automatico 
+   delle immagini e invoco la funzione di autoplay.*/
+let autoplay;
+startAutoplay();
 
 
-}, 3000);
-
-
-// button per stoppare e riavviare l'autoplay
+// Dichiaro una variabile che segni con cui controllare la funzionalità dell buttonAutoplay.
 let isPlaying = true;
 
+
+// Attivazione button Start/Resume Autoplay.
 buttonAutoplay.addEventListener('click', function(){
   
   isPlaying = !isPlaying;
@@ -131,88 +169,37 @@ buttonAutoplay.addEventListener('click', function(){
     clearInterval(autoplay);
   } else {
     buttonAutoplay.innerText = 'Stop';
-    autoplay = setInterval(function(){
-
-    carouselElements[index].classList.remove('active');
-    thumbImages[index].classList.remove('selected');
-
-    index++;
-  
-    if (index === carouselElements.length){
-    index = 0;
-    } 
-
-    carouselElements[index].classList.add('active');
-    thumbImages[index].classList.add('selected');
-    }, 3000);
+    startAutoplay();
   }
 
 });
 
+
 // Attivazione buttons con 2 event listener.
-buttonNext.addEventListener('click', function(){
+buttonNext.addEventListener('click', function (){
+  stopAutoplay(); 
+ 
+  changePic('next-image');
+});
 
-  clearInterval(autoplay);
-  buttonAutoplay.innerText = 'Resume';
-  isPlaying = false;
+buttonPrev.addEventListener('click', function (){
+  stopAutoplay();
 
-  carouselElements[index].classList.remove('active');
-  thumbImages[index].classList.remove('selected');
-
-  index++;
-
-  if (index === carouselElements.length){
-    index = 0;
-  }
-
-  carouselElements[index].classList.add('active');
-  thumbImages[index].classList.add('selected');
-
-})
+  changePic('prev-image');
+});
 
 
-buttonPrev.addEventListener('click', function(){
-
-  clearInterval(autoplay);
-  buttonAutoplay.innerText = 'Resume';
-  isPlaying = false;
-  
-  carouselElements[index].classList.remove('active');
-  thumbImages[index].classList.remove('selected');
-
-  index--;
-
-  if (index < 0){
-    index = carouselElements.length - 1;
-  }
-
-  carouselElements[index].classList.add('active');
-  thumbImages[index].classList.add('selected');
-
-})
-
-  
+// Attivazione "click" alle immagini thumb.
 for (let i = 0; i < thumbImages.length; i++){
 
-     const imgThumb = thumbImages[i];
+  const imgThumb = thumbImages[i];
 
-     imgThumb.addEventListener('click', function(){
-
-       clearInterval(autoplay);
-       buttonAutoplay.innerText = 'Resume';
-       isPlaying = false;
-
-       carouselElements[index].classList.remove('active');
-       thumbImages[index].classList.remove('selected');
-       
-       index = i;
-       
-       carouselElements[index].classList.add('active');
-       thumbImages[index].classList.add('selected');
- 
-     })
+  imgThumb.addEventListener('click', function(){
+    stopAutoplay();
+    
+    changePic(i);
+  })
 }
-
 
 
 
