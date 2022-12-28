@@ -98,11 +98,15 @@ const changePic = target => {
 }
 
 
+// Dichiaro una variabile per lo scorrimento automatico delle immagini.
+let autoplay;
+
+
 // Funzione per far partire l'autoplay.
-const startAutoplay = () => {
+const startAutoplay = (direction) => {
   autoplay = setInterval(() => {
 
-  changePic('next-image');
+  changePic(direction);
 }, 3000); 
 }
 
@@ -111,7 +115,7 @@ const startAutoplay = () => {
 const stopAutoplay = () => {
   clearInterval(autoplay);
   isPlaying = false;
- 
+  
   buttonAutoplay.innerText = 'Resume';
 }
 
@@ -149,13 +153,15 @@ carouselElements[index].classList.add('active');
 thumbImages[index].classList.add('selected');
 
 
-/* Dichiaro una variabile per lo scorrimento automatico 
-   delle immagini e invoco la funzione di autoplay.*/
-let autoplay;
-startAutoplay();
+// Dichiaro una variabile per salvare la direzione dello scorrimento automatico.
+let direction = 'next-image';
 
 
-// Dichiaro una variabile che segni con cui controllare la funzionalità dell buttonAutoplay.
+// Invoco la funzione di autoplay.
+startAutoplay(direction);
+
+
+// Dichiaro una variabile con cui controllare la funzionalità del buttonAutoplay.
 let isPlaying = true;
 
 
@@ -169,10 +175,23 @@ buttonAutoplay.addEventListener('click', function(){
     clearInterval(autoplay);
   } else {
     buttonAutoplay.innerText = 'Stop';
-    startAutoplay();
+    startAutoplay(direction);
   }
 
 });
+
+
+// Attivazione button per cambiare la direzione di scorrimento autoplay.
+buttonReverseAutoplay.addEventListener('click', function(){
+  
+  clearInterval(autoplay);
+
+  direction = direction === 'next-image' ? 'prev-image' : 'next-image';
+
+  startAutoplay(direction);
+  buttonAutoplay.innerText = 'Stop';
+  isPlaying = true;
+})
 
 
 // Attivazione buttons con 2 event listener.
@@ -200,6 +219,9 @@ for (let i = 0; i < thumbImages.length; i++){
     changePic(i);
   })
 }
+
+
+
 
 
 
