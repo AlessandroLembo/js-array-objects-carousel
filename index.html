@@ -13,23 +13,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-      
-    <div class="container">
-        <button id="prev-image">
-            <i class="fa-solid fa-circle-up"></i>
-        </button>
-        <div class="container-images">
-            <div id="carousel"></div> 
-            <div id="thumb"></div>
+    <div class="main-container">
+
+        <div class="container">
+            <button id="prev-image">
+                <i class="fa-solid fa-circle-chevron-up icon-arrow"></i>
+            </button>
+            <div class="container-images">
+                <div id="carousel"></div> 
+                <div id="thumb"></div>
+            </div>
+            <button id="next-image">
+                <i class="fa-solid fa-circle-chevron-down icon-arrow"></i>
+            </button>
         </div>
-        <button id="next-image">
-            <i class="fa-solid fa-circle-down"></i>
-        </button>
-        <div class="autoplay">
-            <button id="btn-autoplay">Stop</button>  
-            <button id="btn-reverse-autoplay">
-                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-            </button>  
+        <div class="wrapper">
+            <div class="autoplay">
+                <button id="btn-autoplay">STOP</button>  
+                <button id="btn-reverse-autoplay">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                </button>  
+            </div>
+    
         </div>
     </div>
 
