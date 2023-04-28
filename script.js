@@ -107,7 +107,7 @@ const startAutoplay = (direction) => {
   autoplay = setInterval(() => {
 
   changePic(direction);
-}, 3000); 
+}, 2000); 
 }
 
 
